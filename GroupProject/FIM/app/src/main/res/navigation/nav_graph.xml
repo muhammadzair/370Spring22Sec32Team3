@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/Welcome">
+
+    <fragment
+        android:id="@+id/Welcome"
+        android:name="edu.qc.seclass.fim.Welcome"
+        android:label="@string/Welcome_label"
+        tools:layout="@layout/activity_welcome">
+
+        <action
+            android:id="@+id/action_Welcome_to_Search"
+            app:destination="@id/Search" />
+        <action
+            android:id="@+id/action_Welcome_to_Login"
+            app:destination="@id/Login" />
+    </fragment>
+    <fragment
+        android:id="@+id/Search"
+        android:name="edu.qc.seclass.fim.Search"
+        android:label="@string/Search_label"
+        tools:layout="@layout/activity_search">
+
+        <action
+            android:id="@+id/action_Search_to_SearchResult"
+            app:destination="@id/SearchResult" />
+        <action
+            android:id="@+id/action_Search_to_Store"
+            app:destination="@id/Store" />
+        <action
+            android:id="@+id/action_Search_to_user_page"
+            app:destination="@id/user_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/SearchResult"
+        android:name="edu.qc.seclass.fim.SearchResult"
+        android:label="@string/Search_Result_label"
+        tools:layout="@layout/fragment_search_result">
+        <action
+            android:id="@+id/action_SearchResult_to_FloorInformation"
+            app:destination="@id/FloorInformation" />
+    </fragment>
+    <fragment
+        android:id="@+id/FloorInformation"
+        android:name="edu.qc.seclass.fim.FloorInfomation"
+        android:label="@string/Floor_Information_label"
+        tools:layout="@layout/fragment_floor_infomation"/>
+    <fragment
+        android:id="@+id/Store"
+        android:name="edu.qc.seclass.fim.Store"
+        tools:layout="@layout/fragment_store">
+        <action
+            android:id="@+id/action_Store_to_FloorInformation"
+            app:destination="@id/FloorInformation" />
+    </fragment>
+    <fragment
+        android:id="@+id/History"
+        android:name="edu.qc.seclass.fim.History"
+        tools:layout="@layout/fragment_history">
+
+        <action
+            android:id="@+id/action_History_to_FloorInformation"
+            app:destination="@id/FloorInformation" />
+        <action
+            android:id="@+id/action_History_to_Store"
+            app:destination="@id/Store" />
+        <action
+            android:id="@+id/action_History_to_user_page"
+            app:destination="@id/user_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/user_page"
+        android:name="edu.qc.seclass.fim.UserPage"
+        tools:layout="@layout/fragment_user_page">
+
+        <action
+            android:id="@+id/action_user_page_to_History"
+            app:destination="@id/History" />
+        <action
+            android:id="@+id/action_user_page_to_Search"
+            app:destination="@id/Search" />
+    </fragment>
+    <fragment
+        android:id="@+id/Login"
+        android:name="edu.qc.seclass.fim.Login"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_Login_to_Welcome"
+            app:destination="@id/Welcome" />
+    </fragment>
+</navigation>

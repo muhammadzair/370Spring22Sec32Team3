@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">FIM</string>
+    <string name="title_activity_main_screen">MainScreen</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="Welcome_label">Welcome</string>
+    <string name="Search_label">Search</string>
+    <string name="Search_Result_label">Search Result</string>
+    <string name="Floor_Information_label">Floor Information</string>
+
+    <string name="to_login_page">Login</string>
+    <string name="previous">Previous</string>
+
+    <string name="Welcome_message">Welcome to FIM</string>
+
+    <!-- String related to Search -->
+    <string name="Product_name">Product name</string>
+    <string name="Search_Product">Search Product</string>
+
+    <string name="Store_name">Store name</string>
+    <string name="Search_Store">Search Store</string>
+
+    <string name="Floor_category_label">Floor Category</string>
+    <string name="Floor_type_label">Floor Type</string>
+
+    <string name="floorcategory">
+        <item>null</item>
+        <item>Tile</item>
+        <item>Stone</item>
+        <item>Wood</item>
+        <item>Laminate</item>
+        <item>Vinyl</item>
+    </string>
+
+    <string name="floortype_tile">
+        <item>null</item>
+        <item>Procelain</item>
+        <item>Ceramic</item>
+        <item>Resin</item>
+    </string>
+
+    <string name="floortype_stone">
+        <item>null</item>
+        <item>Marble</item>
+        <item>Pebble</item>
+        <item>Slate</item>
+    </string>
+
+    <string name="floortype_wood">
+        <item>null</item>
+        <item>Solid</item>
+        <item>Engineered</item>
+        <item>Bomboo</item>
+    </string>
+
+    <string name="floortype_Laminate">
+        <item>null</item>
+        <item>Regular</item>
+        <item>Water Resistant</item>
+    </string>
+
+    <string name="floortype_vinyl">
+        <item>null</item>
+        <item>Water Resistant</item>
+        <item>Waterproof</item>
+    </string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <!-- String relate to userpage -->
+    <string name="history">View History</string>
+    <string name="employee">Go to Store</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
