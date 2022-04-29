@@ -38,20 +38,20 @@
         android:id="@+id/SearchResult"
         android:name="edu.qc.seclass.fim.SearchResult"
         android:label="@string/Search_Result_label"
-        tools:layout="@layout/fragment_search_result">
+        tools:layout="@layout/activity_result">
         <action
             android:id="@+id/action_SearchResult_to_FloorInformation"
             app:destination="@id/FloorInformation" />
     </fragment>
     <fragment
         android:id="@+id/FloorInformation"
-        android:name="edu.qc.seclass.fim.FloorInfomation"
+        android:name="edu.qc.seclass.fim.FloorInformation"
         android:label="@string/Floor_Information_label"
-        tools:layout="@layout/fragment_floor_infomation"/>
+        tools:layout="@layout/activity_floor_infomation"/>
     <fragment
         android:id="@+id/Store"
         android:name="edu.qc.seclass.fim.Store"
-        tools:layout="@layout/fragment_store">
+        tools:layout="@layout/activity_store">
         <action
             android:id="@+id/action_Store_to_FloorInformation"
             app:destination="@id/FloorInformation" />
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/History"
         android:name="edu.qc.seclass.fim.History"
-        tools:layout="@layout/fragment_history">
+        tools:layout="@layout/activity_history">
 
         <action
             android:id="@+id/action_History_to_FloorInformation"
@@ -74,7 +74,7 @@
     <fragment
         android:id="@+id/user_page"
         android:name="edu.qc.seclass.fim.UserPage"
-        tools:layout="@layout/fragment_user_page">
+        tools:layout="@layout/activity_page">
 
         <action
             android:id="@+id/action_user_page_to_History"
@@ -86,7 +86,7 @@
     <fragment
         android:id="@+id/Login"
         android:name="edu.qc.seclass.fim.Login"
-        tools:layout="@layout/fragment_login">
+        tools:layout="@layout/activity_login">
 
         <action
             android:id="@+id/action_Login_to_Welcome"

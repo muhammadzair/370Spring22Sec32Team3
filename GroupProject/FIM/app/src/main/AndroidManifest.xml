@@ -10,19 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FIM">
         <activity
-            android:name=".MainScreen"
+            android:name=".Welcome"
             android:exported="true"
             android:label="@string/title_activity_main_screen"
             android:theme="@style/Theme.FIM.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />-
-
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
+        <activity android:name=".Search"> </activity>
+        <activity android:name=".Login"> </activity>
+        <activity android:name=".SearchResult"> </activity>
+        <activity android:name=".History"> </activity>
+        <activity android:name=".UserPage"> </activity>
+        <activity android:name=".FloorInformation"> </activity>
+        <activity android:name=".Store"> </activity>
     </application>
 
 </manifest>

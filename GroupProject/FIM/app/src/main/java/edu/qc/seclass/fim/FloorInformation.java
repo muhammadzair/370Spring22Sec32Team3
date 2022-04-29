@@ -4,12 +4,12 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class UserPage extends AppCompatActivity {
+public class FloorInformation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_page);
+        setContentView(R.layout.activity_floor_infomation);
 
 
     }

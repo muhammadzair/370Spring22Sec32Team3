@@ -1,55 +1,48 @@
 package edu.qc.seclass.fim;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.appcompat.app.AppCompatActivity;
 
-import edu.qc.seclass.fim.databinding.ActivityWelcomeBinding;
 
-public class Welcome extends Fragment {
+public class Welcome extends AppCompatActivity {
 
-    private ActivityWelcomeBinding binding;
+    private Button tosearch;
+    private Button tologin;
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_welcome);
 
-        binding = ActivityWelcomeBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        binding.toSearch.setOnClickListener(new View.OnClickListener() {
+        tosearch = (Button) findViewById(R.id.to_search);
+        tosearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(Welcome.this)
-                        .navigate(R.id.action_Welcome_to_Search);
+                openSearch();
             }
         });
 
-        binding.toLogin.setOnClickListener(new View.OnClickListener() {
+        tologin = (Button) findViewById(R.id.to_login);
+        tologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(Welcome.this)
-                        .navigate(R.id.action_Welcome_to_Login);
+                openLogin();
             }
         });
+
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public void openSearch(){
+        Intent intent = new Intent(this, Search.class);
+        startActivity(intent);
     }
 
+    public void openLogin(){
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
 }
