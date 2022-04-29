@@ -12,13 +12,26 @@ public class Welcome extends AppCompatActivity {
 
     private Button tosearch;
     private Button tologin;
+    DatabaseOpenHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        tosearch = (Button) findViewById(R.id.to_search);
+        dbhelper = new DatabaseOpenHelper(this,"FIMDatabase.db",1);
+        try {
+            dbhelper.CheckDB();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            dbhelper.OpenDatabsse();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        tosearch = findViewById(R.id.to_search);
         tosearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,7 +39,7 @@ public class Welcome extends AppCompatActivity {
             }
         });
 
-        tologin = (Button) findViewById(R.id.to_login);
+        tologin = findViewById(R.id.to_login);
         tologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
