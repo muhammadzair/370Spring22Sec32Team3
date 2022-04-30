@@ -7,27 +7,24 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 
 public class Welcome extends AppCompatActivity {
 
     private Button tosearch;
     private Button tologin;
-    DatabaseOpenHelper dbhelper;
+    DatabaseHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        dbhelper = new DatabaseOpenHelper(this,"FIMDatabase.db",1);
+        dbhelper = new DatabaseHelper(Welcome.this);
         try {
-            dbhelper.CheckDB();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try {
-            dbhelper.OpenDatabsse();
-        }catch (Exception e){
+            dbhelper.CopyDBfile();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
