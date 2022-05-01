@@ -1,5 +1,6 @@
 package edu.qc.seclass.fim;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -30,7 +31,7 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openactivity_page();
                 // validate inputs
                 if(TextUtils.isEmpty(username.getText().toString()) ||
                         TextUtils.isEmpty(password.getText().toString())){
@@ -46,9 +47,15 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Invalid Username/Password", Toast.LENGTH_LONG).show();
                 }
             }
+
         });
 
 
 
+    }
+
+    private void openactivity_page() {
+        Intent intent = new Intent(this, UserPage.class);
+        startActivity(intent);
     }
 }
