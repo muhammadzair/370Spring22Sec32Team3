@@ -37,9 +37,6 @@ public class Login extends AppCompatActivity {
                 String empIdText = empId.getText().toString();
                 String empPassText = empPass.getText().toString();
 
-                // Validation from EmployeeDB
-                Boolean checkEmpID = DB.checkEmployeeID(Integer.parseInt(empIdText));
-                Boolean checkEmp = DB.checkEmployee(Integer.parseInt(empIdText), empPassText);
 
                 // Validation cases. If logged in, load EmployeeHomeActivity
                 if(checkEmpID == false) {
