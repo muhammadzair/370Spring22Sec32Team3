@@ -1,5 +1,6 @@
- package edu.qc.seclass.fim;
+package edu.qc.seclass.fim;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,39 +16,44 @@ public class Login extends AppCompatActivity {
     EditText username, password;
     Button btnLogin;
 
-    String correct_username = "employee";
-    String correct_password = "password";
+    String correct_username = "Username";
+    String correct_password = "Password";
 
-@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_login);
+        setContentView(R.layout.activity_login);
 
-        // Variables
-        Button loginBtn = (Button) findViewById(R.id.empLogin_btn_login);
-        Button registerBtn = (Button) findViewById(R.id.empLogin_btn_register);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        btnLogin = findViewById(R.id.button);
 
-        // On login click
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Input variables
-                EditText empId = (EditText) findViewById(R.id.empLogin_input_id);
-                EditText empPass = (EditText) findViewById(R.id.empLogin_input_pass);
-                // Input values
-                String empIdText = empId.getText().toString();
-                String empPassText = empPass.getText().toString();
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-
-                // Validation cases. If logged in, load EmployeeHomeActivity
-                if(checkEmpID == false) {
-                    Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_SHORT).show();
-                } else if (checkEmp == true) {
-                    Toast.makeText(getApplicationContext(), "Logged in!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(EmployeeLoginActivity.this, EmployeeHomeActivity.class));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Incorrect pass", Toast.LENGTH_SHORT).show();
+                // validate inputs
+                if(TextUtils.isEmpty(username.getText().toString()) ||
+                        TextUtils.isEmpty(password.getText().toString())){
+                    Toast.makeText(Login.this, "Empty Entry Provided", Toast.LENGTH_LONG).show();
+                } else if(username.getText().toString().equals(correct_username)){
+                    //validate password
+                    if(password.getText().toString().equals(correct_password)){
+                        Toast.makeText(Login.this, "Login Success", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(Login.this, "Invalid Username/Password", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    Toast.makeText(Login.this, "Invalid Username/Password", Toast.LENGTH_LONG).show();
                 }
+                startActivity(new Intent(
+
+                        Login.this,
+                        UserPage.class ));
             }
         });
 
-        
+
+
+    }
+}
