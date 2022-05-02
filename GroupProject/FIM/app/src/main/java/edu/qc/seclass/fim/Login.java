@@ -1,6 +1,5 @@
-package edu.qc.seclass.fim;
+ package edu.qc.seclass.fim;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,37 +15,49 @@ public class Login extends AppCompatActivity {
     EditText username, password;
     Button btnLogin;
 
-    @Override
+    String correct_username = "employee";
+    String correct_password = "password";
+
+@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_employee_login);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        btnLogin = findViewById(R.id.button);
+        // Variables
+        Button loginBtn = (Button) findViewById(R.id.empLogin_btn_login);
+        Button registerBtn = (Button) findViewById(R.id.empLogin_btn_register);
 
-                btnLogin.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //correct username/password
-                        if(username.getText().toString().equals("employee")
-                                && password.getText().toString().equals("password")){
-                            Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                            //redirects to another page when login succesfully
-                            Intent intent = new Intent(Login.this, UserPage.class);
-                            startActivity(intent);
-                            finish();
-                            //if one of the field is empty
-                        } else if (TextUtils.isEmpty(username.getText().toString()) ||
-                                TextUtils.isEmpty(password.getText().toString())){
-                            Toast.makeText(Login.this, "Empty Entry Provided", Toast.LENGTH_LONG).show();
-                        }
+        // On login click
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Input variables
+                EditText empId = (EditText) findViewById(R.id.empLogin_input_id);
+                EditText empPass = (EditText) findViewById(R.id.empLogin_input_pass);
+                // Input values
+                String empIdText = empId.getText().toString();
+                String empPassText = empPass.getText().toString();
 
-                        else
-                            //incorrect username/password
-                            Toast.makeText(Login.this,"Wrong username or password",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                // Validation from EmployeeDB
+                Boolean checkEmpID = DB.checkEmployeeID(Integer.parseInt(empIdText));
+                Boolean checkEmp = DB.checkEmployee(Integer.parseInt(empIdText), empPassText);
 
-        }
+                // Validation cases. If logged in, load EmployeeHomeActivity
+                if(checkEmpID == false) {
+                    Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_SHORT).show();
+                } else if (checkEmp == true) {
+                    Toast.makeText(getApplicationContext(), "Logged in!", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(EmployeeLoginActivity.this, EmployeeHomeActivity.class));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Incorrect pass", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // On register click
+        registerBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                startActivity(new Intent(EmployeeLoginActivity.this, EmployeeRegisterActivity.class));
+            }
+        });
     }
+}
