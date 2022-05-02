@@ -16,9 +16,6 @@ public class Login extends AppCompatActivity {
     EditText username, password;
     Button btnLogin;
 
-    String correct_username = "employee";
-    String correct_password = "password";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,34 +25,28 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         btnLogin = findViewById(R.id.button);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openactivity_page();
-                // validate inputs
-                if(TextUtils.isEmpty(username.getText().toString()) ||
-                        TextUtils.isEmpty(password.getText().toString())){
-                    Toast.makeText(Login.this, "Empty Entry Provided", Toast.LENGTH_LONG).show();
-                } else if(username.getText().toString().equals(correct_username)){
-                    //validate password
-                    if(password.getText().toString().equals(correct_password)){
-                        Toast.makeText(Login.this, "Login Success", Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(Login.this, "Invalid Username/Password", Toast.LENGTH_LONG).show();
+                btnLogin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //correct username/password
+                        if(username.getText().toString().equals("employee")
+                                && password.getText().toString().equals("password")){
+                            Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                            //redirects to another page when login succesfully
+                            Intent intent = new Intent(Login.this, UserPage.class);
+                            startActivity(intent);
+                            finish();
+                            //if one of the field is empty
+                        } else if (TextUtils.isEmpty(username.getText().toString()) ||
+                                TextUtils.isEmpty(password.getText().toString())){
+                            Toast.makeText(Login.this, "Empty Entry Provided", Toast.LENGTH_LONG).show();
+                        }
+
+                        else
+                            //incorrect username/password
+                            Toast.makeText(Login.this,"Wrong username or password",Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(Login.this, "Invalid Username/Password", Toast.LENGTH_LONG).show();
-                }
-            }
+                });
 
-        });
-
-
-
+        }
     }
-
-    private void openactivity_page() {
-        Intent intent = new Intent(this, UserPage.class);
-        startActivity(intent);
-    }
-}
