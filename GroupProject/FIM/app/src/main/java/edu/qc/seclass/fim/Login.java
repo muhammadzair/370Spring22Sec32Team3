@@ -50,11 +50,4 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        // On register click
-        registerBtn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                startActivity(new Intent(EmployeeLoginActivity.this, EmployeeRegisterActivity.class));
-            }
-        });
-    }
-}
+        
